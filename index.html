@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assist Informatique | Dépannage, Installation & Maintenance en Ardèche</title>
+    <meta name="description" content="Assistance, dépannage, installation et maintenance informatique à domicile et en entreprise en Ardèche. Interventions rapides depuis Lalevade-d'Ardèche, agrément Services à la Personne (Crédit d'impôt 50%).">
+    <meta name="keywords" content="dépannage informatique Ardèche, réparation ordinateur Lalevade d'Ardèche, Aubenas, maintenance informatique, crédit impôt informatique, Privas, Vals-les-Bains">
+    
+    <!-- Open Graph / Réseaux sociaux -->
+    <meta property="og:title" content="Assist Informatique | Dépannage & Maintenance en Ardèche">
+    <meta property="og:description" content="Informatique à domicile & en entreprise. Déplacement rapide depuis Lalevade-d'Ardèche.">
+    <meta property="og:type" content="website">
+
+    <!-- Polices & Bibliothèques -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Rajdhani:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- Feuille de style principale -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Schema.org / SEO Local Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Assist Informatique",
+      "telephone": "+33668370640",
+      "email": "hugomarmeys@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Lalevade-d'Ardèche",
+        "addressRegion": "Ardèche",
+        "postalCode": "07380",
+        "addressCountry": "FR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 44.6475,
+        "longitude": 4.3753
+      },
+      "areaServed": "Ardèche",
+      "priceRange": "€€",
+      "identifier": "10768364100016"
+    }
+    </script>
+</head>
+<body>
+
+    <canvas id="webgl-bg" aria-hidden="true"></canvas>
+
+    <!-- NAVBAR FIXE -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="#accueil" class="brand-logo" aria-label="Accueil Assist Informatique">
+                <div class="logo-symbol"><i data-lucide="monitor" style="width: 28px; height: 28px;"></i></div>
+                <div class="brand-name">ASSIST<span>INFORMATIQUE</span></div>
+            </a>
+            <nav class="main-nav" aria-label="Navigation principale">
+                <a href="#accueil" class="nav-link" data-target="accueil">Accueil</a>
+                <a href="#services" class="nav-link" data-target="services">Services & Tarifs</a>
+                <a href="#devis-zone" class="nav-link" data-target="devis-zone">Zone & Devis</a>
+                <a href="#avis" class="nav-link" data-target="avis">Avis</a>
+                <a href="#contact" class="nav-link" data-target="contact">Contact</a>
+            </nav>
+            <a href="tel:0668370640" class="btn btn-call" aria-label="Appeler au 06 68 37 06 40">
+                <i data-lucide="phone" style="width: 18px; height: 18px;"></i>
+                <span>06 68 37 06 40</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- SECTION 1 : HERO ACCUEIL -->
+    <section id="accueil" class="hero-section">
+        <div class="container hero-layout">
+            <div class="hero-text">
+                <div class="tech-badge"><span class="pulse-dot"></span><span>ARDÈCHE & ENVIRONS</span></div>
+                <h1>DÉPANNAGE <span class="accent-dot">•</span> INSTALLATION <span class="accent-dot">•</span> MAINTENANCE</h1>
+                <p class="hero-description">Informatique à domicile & en entreprise. Des solutions techniques fiables, rapides et adaptées à vos besoins.</p>
+                <div class="hero-buttons">
+                    <a href="#devis-zone" class="btn btn-primary">Simuler mon tarif</a>
+                    <a href="#contact" class="btn btn-secondary">Prendre contact</a>
+                </div>
+            </div>
+
+            <div class="hero-hud-card">
+                <div class="hud-corner top-left"></div>
+                <div class="hud-corner top-right"></div>
+                <div class="hud-corner bottom-left"></div>
+                <div class="hud-corner bottom-right"></div>
+                <div class="hud-card-body">
+                    <div class="hud-icon-wrapper">
+                        <i data-lucide="monitor" style="width: 64px; height: 64px; stroke-width: 1.5;"></i>
+                    </div>
+                    <h2>ASSIST INFORMATIQUE</h2>
+                    <p class="hud-tagline">INFORMATIQUE À DOMICILE & EN ENTREPRISE</p>
+                    <div class="hud-location"><i data-lucide="map-pin" style="width: 16px; height: 16px;"></i><span>BASE : LALEVADE-D'ARDÈCHE (07380)</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2 : NOS PRESTATIONS & TARIFS -->
+    <section id="services" class="services-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>NOS PRESTATIONS & TARIFS</h2>
+                <p class="sub-text" style="max-width: 780px; margin: 10px auto 0;">
+                    Tarifs clairs : Forfaits encadrés dans le temps ou taux horaire. Agrément <strong>Services à la Personne (SAP)</strong> : Bénéficiez de 50 % de crédit d'impôt sur vos interventions à domicile.
+                </p>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="services-grid">
+                <!-- CARTE 1 -->
+                <article class="service-hud-card">
+                    <div class="service-icon"><i data-lucide="zap" style="width: 36px; height: 36px;"></i></div>
+                    <h3>Dépannage & Diagnostic</h3>
+                    <p>Résolution de bugs, pannes matérielles ou logicielles, blocages système et réinitialisation.</p>
+                    <div class="service-duration-note">⏱️ Forfait (1h max inclus)</div>
+                    <div class="service-price-tag">
+                        <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                            <span class="price-raw">50 €</span>
+                            <span class="price-type-badge">Forfait</span>
+                        </div>
+                        <span class="price-tax">Soit <strong>25 €</strong> après crédit d'impôt</span>
+                    </div>
+                </article>
+
+                <!-- CARTE 2 -->
+                <article class="service-hud-card">
+                    <div class="service-icon"><i data-lucide="wifi" style="width: 36px; height: 36px;"></i></div>
+                    <h3>Box, Wi-Fi & Réseau</h3>
+                    <p>Installation et sécurisation de votre Box Internet, répéteurs Wi-Fi, modules CPL et imprimantes.</p>
+                    <div class="service-duration-note">⏱️ Forfait (1h max inclus)</div>
+                    <div class="service-price-tag">
+                        <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                            <span class="price-raw">50 €</span>
+                            <span class="price-type-badge">Forfait</span>
+                        </div>
+                        <span class="price-tax">Soit <strong>25 €</strong> après crédit d'impôt</span>
+                    </div>
+                </article>
+
+                <!-- CARTE 3 -->
+                <article class="service-hud-card">
+                    <div class="service-icon"><i data-lucide="shield-check" style="width: 36px; height: 36px;"></i></div>
+                    <h3>Nettoyage & Désinfection</h3>
+                    <p>Éradication des virus, malwares, fenêtres intempestives et suppression des lenteurs système.</p>
+                    <div class="service-duration-note">⏱️ Forfait (1h15 max inclus)</div>
+                    <div class="service-price-tag">
+                        <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                            <span class="price-raw">60 €</span>
+                            <span class="price-type-badge">Forfait</span>
+                        </div>
+                        <span class="price-tax">Soit <strong>30 €</strong> après crédit d'impôt</span>
+                    </div>
+                </article>
+
+                <!-- CARTE 4 -->
+                <article class="service-hud-card">
+                    <div class="service-icon"><i data-lucide="hard-drive" style="width: 36px; height: 36px;"></i></div>
+                    <h3>Sauvegarde & Données</h3>
+                    <p>Sauvegarde préventive de vos fichiers, photos et documents importants ou récupération après panne.</p>
+                    <div class="service-duration-note">⏱️ Forfait (1h15 max inclus)</div>
+                    <div class="service-price-tag">
+                        <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                            <span class="price-raw">65 €</span>
+                            <span class="price-type-badge">Forfait</span>
+                        </div>
+                        <span class="price-tax">Soit <strong>32,50 €</strong> après crédit d'impôt</span>
+                    </div>
+                </article>
+
+                <!-- CARTE 5 -->
+                <article class="service-hud-card">
+                    <div class="service-icon"><i data-lucide="monitor" style="width: 36px; height: 36px;"></i></div>
+                    <h3>Mise en Service Neuf</h3>
+                    <p>Configuration complète de votre nouvel ordinateur, transfert de vos anciens fichiers et sécurisation.</p>
+                    <div class="service-duration-note">⏱️ Forfait (1h30 max inclus)</div>
+                    <div class="service-price-tag">
+                        <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                            <span class="price-raw">80 €</span>
+                            <span class="price-type-badge">Forfait</span>
+                        </div>
+                        <span class="price-tax">Soit <strong>40 €</strong> après crédit d'impôt</span>
+                    </div>
+                </article>
+
+                <!-- CARTE 6 -->
+                <article class="service-hud-card">
+                    <div class="service-icon"><i data-lucide="graduation-cap" style="width: 36px; height: 36px;"></i></div>
+                    <h3>Accompagnement & Formation</h3>
+                    <p>Cours personnalisés sur mesure : prise en main ordinateur, smartphone, tablette, e-mails et sécurité.</p>
+                    <div class="service-duration-note">⏱️ Facturation au temps passé</div>
+                    <div class="service-price-tag">
+                        <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                            <span class="price-raw">40 € / h</span>
+                            <span class="price-type-badge">Taux Horaire</span>
+                        </div>
+                        <span class="price-tax">Soit <strong>20 € / h</strong> après crédit d'impôt</span>
+                    </div>
+                </article>
+            </div>
+            <p class="sub-text" style="text-align: center; margin-top: 25px; font-style: italic;">
+                * Au-delà du temps inclus dans les forfaits (en cas de panne complexe ou d'interventions multiples), un taux horaire de 40 €/h s'applique.
+            </p>
+        </div>
+    </section>
+
+    <!-- SECTION 3 : COCKPIT ZONE & SIMULATEUR UNIFIÉ -->
+    <section id="devis-zone" class="simulator-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>ZONE D'INTERVENTION & SIMULATEUR DE DEVIS</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="cockpit-grid">
+                <!-- CARTE INTERACTIVE HUD -->
+                <div class="map-hud-frame">
+                    <div id="map"></div>
+                    <div class="tarifs-legend">
+                        <div class="legend-item"><span class="badge-color bg-z1"></span> Zone 1 (0-15 km) : Offert</div>
+                        <div class="legend-item"><span class="badge-color bg-z2"></span> Zone 2 (15-30 km) : 15 €</div>
+                        <div class="legend-item"><i data-lucide="info" style="width: 14px; height: 14px;"></i> > 30 km : Devis</div>
+                    </div>
+                </div>
+
+                <!-- CALCULATEUR TOUT-EN-UN -->
+                <div class="sim-card">
+                    <h3>Calculateur de Tarif</h3>
+                    
+                    <div class="client-type-selector">
+                        <label>
+                            <input type="radio" name="client-type" value="particulier" checked onchange="updateSimPrice()"> Particulier (Crédit d'Impôt 50%)
+                        </label>
+                        <label>
+                            <input type="radio" name="client-type" value="pro" onchange="updateSimPrice()"> Pro
+                        </label>
+                    </div>
+
+                    <div class="sim-options">
+                        <label class="sim-option-item">
+                            <span><i data-lucide="zap"></i> Diagnostic / Lenteurs & Virus (Forfait 1h)</span>
+                            <input type="checkbox" class="sim-check" value="50" onchange="updateSimPrice()">
+                        </label>
+                        <label class="sim-option-item">
+                            <span><i data-lucide="wrench"></i> Installation Box / Wi-Fi / CPL (Forfait 1h)</span>
+                            <input type="checkbox" class="sim-check" value="50" onchange="updateSimPrice()">
+                        </label>
+                        <label class="sim-option-item">
+                            <span><i data-lucide="hard-drive"></i> Sauvegarde & Données (Forfait 1h15)</span>
+                            <input type="checkbox" class="sim-check" value="65" onchange="updateSimPrice()">
+                        </label>
+                        <label class="sim-option-item">
+                            <span><i data-lucide="monitor"></i> Mise en service PC neuf (Forfait 1h30)</span>
+                            <input type="checkbox" class="sim-check" value="80" onchange="updateSimPrice()">
+                        </label>
+                    </div>
+
+                    <div class="location-group">
+                        <label style="font-family: var(--font-heading); font-weight: 700;">Votre Commune d'Ardèche :</label>
+                        <div class="calc-input-group">
+                            <input type="text" id="sim-city-input" placeholder="Ex: Aubenas, Vals-les-Bains..." />
+                            <button type="button" onclick="calculateSimDistanceAndMap()" class="btn btn-secondary">Localiser</button>
+                        </div>
+                        <div id="sim-zone-info" class="sub-text" style="margin-top: 6px; font-weight: 600;"></div>
+                    </div>
+
+                    <div class="sim-result-box" style="margin-top: 20px;">
+                        <div class="totals-breakdown">
+                            <span class="sub-text">Services : <strong id="subtotal-services">0 €</strong></span> | 
+                            <span class="sub-text">Déplacement : <strong id="subtotal-travel">0 €</strong></span>
+                        </div>
+
+                        <div class="price-badge" id="sim-price-display">0 €</div>
+                        
+                        <div id="tax-box" class="tax-deduction-badge">
+                            🌱 Soit <strong>0 €</strong> après Crédit d'Impôt (50%)
+                        </div>
+
+                        <button onclick="sendSimToContact()" class="btn btn-primary btn-full">
+                            Réserver avec cette estimation
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4 : AVIS GOOGLE CERTIFIÉS -->
+    <section id="avis" class="cases-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>AVIS GOOGLE CLIENTS</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="cases-grid" style="grid-template-columns: minmax(300px, 600px); justify-content: center;">
+                <article class="case-card" style="text-align: center; padding: 32px;">
+                    <div class="rating-stars" style="font-size: 1.4rem;">★★★★★</div>
+                    <p class="review-text" style="font-size: 1.05rem; margin: 16px 0;">
+                        "Aide efficace dans la mise en route de ma nouvelle imprimante et sa connexion avec l'ordinateur. Merci !"
+                    </p>
+                    <div class="review-author" style="font-size: 1.1rem; color: var(--blue-primary);">
+                        — <a href="https://business.google.com/n/141579088308511007/reviews/Ci9DQUlRQUNvZENodHljRjlvT25VeGRVZEpXVGxaTVZVMlJtUTNSblV4VERCUlZIYxAB" target="_blank" rel="noopener noreferrer" style="text-decoration: underline;">Catherine Louis</a> (Avis Google certifié)
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5 : CONTACT & FORMULAIRE FILLOUT INTÉGRÉ -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>CONTACT & DEMANDE D'INTERVENTION</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="contact-grid">
+                <!-- CARTE DE PRÉSENTATION & COORDONNÉES -->
+                <div class="contact-info-card">
+                    <h3>À Propos & Contact</h3>
+                    <div class="bio-box" style="margin-bottom: 20px;">
+                        <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">
+                            Professionnel de l'informatique et de la cybersécurité, j'interviens auprès des particuliers et des professionnels en Ardèche (Lalevade-d'Ardèche, Aubenas et environs). Mon objectif : vous offrir des prestations techniques fiables, transparentes et un accompagnement sur-mesure.
+                        </p>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="item-icon"><i data-lucide="phone-call"></i></div>
+                        <div><span class="label">Téléphone</span><a href="tel:0668370640" class="value">06 68 37 06 40</a></div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="item-icon"><i data-lucide="mail"></i></div>
+                        <div><span class="label">Email</span><a href="mailto:hugomarmeys@gmail.com" class="value">hugomarmeys@gmail.com</a></div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="item-icon"><i data-lucide="map"></i></div>
+                        <div><span class="label">Base</span><span class="value">Lalevade-d'Ardèche & Environs</span></div>
+                    </div>
+
+                    <a href="data:text/vcard;charset=utf-8,BEGIN%3AVCARD%0AVERSION%3A3.0%0AFN%3AHugo%20Marmeys%20-%20Assist%20Informatique%0ATEL%3A0668370640%0AEMAIL%3Ahugomarmeys%40gmail.com%0AEND%3AVCARD" download="Assist-Informatique.vcf" class="btn btn-secondary btn-full" style="margin-top: 15px;">
+                        <i data-lucide="user-plus" style="width: 18px; height: 18px;"></i> Enregistrer le contact (vCard)
+                    </a>
+                </div>
+
+                <!-- FORMULAIRE FILLOUT INTÉGRÉ -->
+                <div class="contact-form-card" style="padding: 10px; background: #FFFFFF;">
+                    <div style="width: 100%; min-height: 500px;" data-fillout-id="pbxxwn3pCjus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize></div>
+                    <script src="https://server.fillout.com/embed/v1/"></script>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER UNIFIÉ -->
+    <footer class="site-footer">
+        <div class="container footer-layout">
+            <div>
+                <strong>ASSIST INFORMATIQUE</strong> &copy; 2026 — Tous droits réservés.
+                <p class="footer-contact-info">06 68 37 06 40 | hugomarmeys@gmail.com</p>
+            </div>
+            <p class="siret-text">SIRET : 107 683 641 00016</p>
+        </div>
+    </footer>
+
+    <!-- Script principal externe -->
+    <script src="js/app.js"></script>
+</body>
+</html>
