@@ -33,17 +33,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 3. Initialisation de la carte Leaflet (Lalevade-d'Ardèche)
+    // 3. Initialisation de la carte Leaflet (Lalevade-d'Ardèche) - Sans clé API
     const baseCoords = [44.6475, 4.3753]; // Coordonnées GPS de Lalevade-d'Ardèche
     const mapElement = document.getElementById('map');
 
     if (mapElement && typeof L !== 'undefined') {
         map = L.map('map').setView(baseCoords, 10);
 
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        // Utilisation du fond de carte OpenStreetMap standard (100% gratuit, sans clé API)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
-            subdomains: 'abcd',
-            attribution: '© OpenStreetMap & CARTO'
+            attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
         L.marker(baseCoords).addTo(map)
