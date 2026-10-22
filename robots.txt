@@ -1,0 +1,6 @@
+# Configuration robots.txt pour Assist Informatique 07
+User-agent: *
+Allow: /
+
+# Emplacement du plan du site (Sitemap)
+Sitemap: https://www.assist-informatique07.fr/sitemap.xml
