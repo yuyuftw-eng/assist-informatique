@@ -14,7 +14,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <!-- Feuille de style principale -->
-    <link rel="stylesheet" href="css/style.css?v=3">
+    <link rel="stylesheet" href="css/style.css?v=4">
 
     <style>
         .site-header .header-inner {
@@ -51,6 +51,19 @@
             max-width: 900px;
             margin: 0 auto;
         }
+        .sap-header-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .sap-logo-page {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+        }
         .sap-card h1 {
             font-family: var(--font-heading, 'Rajdhani', sans-serif);
             font-size: 2.2rem;
@@ -84,7 +97,6 @@
             padding: 6px 14px;
             border-radius: 20px;
             font-size: 0.9rem;
-            margin-bottom: 20px;
             font-family: var(--font-heading, 'Rajdhani', sans-serif);
             letter-spacing: 0.5px;
         }
@@ -101,6 +113,11 @@
             padding: 18px;
             border-radius: 0 8px 8px 0;
             margin: 20px 0;
+        }
+        .footer-sap-logo {
+            height: 40px;
+            width: auto;
+            margin-top: 8px;
         }
     </style>
 </head>
@@ -132,7 +149,10 @@
     <main class="sap-content-section">
         <div class="container">
             <div class="sap-card">
-                <span class="badge-sap-doc">SERVICES À LA PERSONNE — DÉCLARATION N° SAP107683641</span>
+                <div class="sap-header-row">
+                    <span class="badge-sap-doc">SERVICES À LA PERSONNE — DÉCLARATION N° SAP107683641</span>
+                    <img src="https://nova.entreprises.gouv.fr/assets/images/logo-sap.png" alt="Logo Services à la Personne" class="sap-logo-page">
+                </div>
                 
                 <h1>Avance Immédiate du Crédit d'Impôt</h1>
                 <p><strong>Profitez de 50 % de réduction immédiate sur vos prestations informatiques à domicile en Ardèche.</strong></p>
@@ -178,8 +198,9 @@
             <div>
                 <strong>ASSIST INFORMATIQUE 07</strong> &copy; 2026 — Tous droits réservés.
                 <p class="footer-contact-info">06 68 37 06 40 | contact@assist-informatique07.fr</p>
+                <img src="https://nova.entreprises.gouv.fr/assets/images/logo-sap.png" alt="Services à la Personne" class="footer-sap-logo">
             </div>
-            <p class="siret-text">SIRET : 107 683 641 00016</p>
+            <p class="siret-text">SIRET : 107 683 641 00016 <br> Organisme Déclaré SAP N° SAP107683641</p>
         </div>
     </footer>
 
