@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="css/style.css?v=2">
 
     <style>
-        /* Styles additionnels spécifiques pour la mise en page de la notice SAP */
         .sap-content-section {
             padding: 120px 0 80px 0;
             background-color: var(--bg-body, #f8fafc);
@@ -82,35 +81,11 @@
             border-radius: 0 8px 8px 0;
             margin: 20px 0;
         }
-        .btn-print-doc {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: var(--blue-primary, #0066cc);
-            color: white;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            margin-top: 30px;
-            border: none;
-            font-family: var(--font-sans, 'Inter', sans-serif);
-            transition: background 0.2s;
-        }
-        .btn-print-doc:hover {
-            background: #004999;
-        }
-        @media print {
-            .site-header, .site-footer, .btn-print-doc { display: none !important; }
-            .sap-content-section { padding: 0 !important; background: white !important; }
-            .sap-card { box-shadow: none !important; border: none !important; padding: 0 !important; }
-        }
     </style>
 </head>
 <body>
 
-    <!-- NAVBAR FIXE (Identique à l'index) -->
+    <!-- NAVBAR FIXE -->
     <header class="site-header">
         <div class="container header-inner">
             <a href="index.html#accueil" class="brand-logo" aria-label="Accueil Assist Informatique">
@@ -121,6 +96,7 @@
                 <a href="index.html#accueil" class="nav-link">Accueil</a>
                 <a href="index.html#services" class="nav-link">Services & Tarifs</a>
                 <a href="index.html#devis-zone" class="nav-link">Zone & Devis</a>
+                <a href="avance-immediate.html" class="nav-link">Crédit d'Impôt</a>
                 <a href="index.html#avis" class="nav-link">Avis</a>
                 <a href="index.html#contact" class="nav-link">Contact</a>
             </nav>
@@ -155,7 +131,7 @@
                     <li><strong>Activation du compte :</strong> Avec votre accord préalable, nous procédons à votre enregistrement auprès de l'Urssaf. Vous recevez un e-mail de notification pour activer votre compte personnel sur le portail dédié de l'Urssaf.</li>
                     <li><strong>Émission de la demande :</strong> Suite à notre intervention informatique à votre domicile, nous transmettons la demande de paiement correspondant à la prestation.</li>
                     <li><strong>Délai de validation :</strong> Vous recevez une alerte et disposez d'un délai de <strong>48 heures pour valider ou contester</strong> cette demande directement depuis votre espace en ligne Urssaf.</li>
-                    <li><strong>Prélèvement ajusté :</strong> Une fois validée (ou passée the délai des 48h), l'Urssaf prélève uniquement le montant restant à votre charge (soit 50 % du total). L'État nous verse directement la part du crédit d'impôt.</li>
+                    <li><strong>Prélèvement ajusté :</strong> Une fois validée (ou passé le délai des 48h), l'Urssaf prélève uniquement le montant restant à votre charge (soit 50 % du total). L'État nous verse directement la part du crédit d'impôt.</li>
                 </ol>
 
                 <div class="notice-box-sap">
@@ -171,11 +147,6 @@
                 <p>📍 85, Rue des Écoles, 07380 Lalevade-d'Ardèche</p>
                 <p>📞 06 68 37 06 40 | ✉️ contact@assist-informatique07.fr</p>
                 <p>SIRET : 107 683 641 00016 — TVA non applicable, art. 293 B du CGI</p>
-
-                <!-- Bouton d'impression direct pour générer le PDF demandé par l'Urssaf -->
-                <button class="btn-print-doc" onclick="window.print()">
-                    <i data-lucide="printer" style="width: 18px; height: 18px;"></i> Imprimer ou Enregistrer en PDF (Justificatif Urssaf)
-                </button>
             </div>
         </div>
     </main>
