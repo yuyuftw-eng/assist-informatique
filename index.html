@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assist Informatique | Dépannage, Installation & Maintenance en Ardèche</title>
+    <title>Assist Informatique 07 | Dépannage, Installation & Maintenance en Ardèche</title>
     <meta name="description" content="Assistance, dépannage, installation et maintenance informatique à domicile et en entreprise en Ardèche. Interventions rapides depuis Lalevade-d'Ardèche, agrément Services à la Personne (Crédit d'impôt 50%).">
     <meta name="keywords" content="dépannage informatique Ardèche, réparation ordinateur Lalevade d'Ardèche, Aubenas, maintenance informatique, crédit impôt informatique, Privas, Vals-les-Bains">
     
     <!-- Open Graph / Réseaux sociaux -->
-    <meta property="og:title" content="Assist Informatique | Dépannage & Maintenance en Ardèche">
+    <meta property="og:title" content="Assist Informatique 07 | Dépannage & Maintenance en Ardèche">
     <meta property="og:description" content="Informatique à domicile & en entreprise. Déplacement rapide depuis Lalevade-d'Ardèche.">
     <meta property="og:type" content="website">
 
@@ -22,15 +22,40 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-    <!-- Feuille de style principale (avec versioning cache-busting) -->
-    <link rel="stylesheet" href="css/style.css?v=2">
+    <!-- Feuille de style principale -->
+    <link rel="stylesheet" href="css/style.css?v=3">
+
+    <style>
+        /* Ajustements CSS spécifiques pour garantir la fluidité de la Navbar */
+        .site-header .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+        .main-nav {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: nowrap;
+        }
+        .main-nav .nav-link {
+            font-size: 0.85rem;
+            padding: 6px 8px;
+            white-space: nowrap;
+        }
+        .brand-name {
+            font-size: 1.25rem;
+            white-space: nowrap;
+        }
+    </style>
 
     <!-- Schema.org / SEO Local Google -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
-      "name": "Assist Informatique",
+      "name": "Assist Informatique 07",
       "telephone": "+33668370640",
       "email": "contact@assist-informatique07.fr",
       "address": {
@@ -58,9 +83,9 @@
     <!-- NAVBAR FIXE -->
     <header class="site-header">
         <div class="container header-inner">
-            <a href="#accueil" class="brand-logo" aria-label="Accueil Assist Informatique">
-                <div class="logo-symbol"><i data-lucide="monitor" style="width: 28px; height: 28px;"></i></div>
-                <div class="brand-name">ASSIST<span>INFORMATIQUE</span></div>
+            <a href="#accueil" class="brand-logo" aria-label="Accueil Assist Informatique 07">
+                <div class="logo-symbol"><i data-lucide="monitor" style="width: 26px; height: 26px;"></i></div>
+                <div class="brand-name">ASSIST<span>INFORMATIQUE 07</span></div>
             </a>
             <nav class="main-nav" aria-label="Navigation principale">
                 <a href="#accueil" class="nav-link" data-target="accueil">Accueil</a>
@@ -71,7 +96,7 @@
                 <a href="#contact" class="nav-link" data-target="contact">Contact</a>
             </nav>
             <a href="tel:0668370640" class="btn btn-call" aria-label="Appeler au 06 68 37 06 40">
-                <i data-lucide="phone" style="width: 18px; height: 18px;"></i>
+                <i data-lucide="phone" style="width: 16px; height: 16px;"></i>
                 <span>06 68 37 06 40</span>
             </a>
         </div>
@@ -99,7 +124,7 @@
                     <div class="hud-icon-wrapper">
                         <i data-lucide="monitor" style="width: 64px; height: 64px; stroke-width: 1.5;"></i>
                     </div>
-                    <h2>ASSIST INFORMATIQUE</h2>
+                    <h2>ASSIST INFORMATIQUE 07</h2>
                     <p class="hud-tagline">INFORMATIQUE À DOMICILE & EN ENTREPRISE</p>
                     <div class="hud-location"><i data-lucide="map-pin" style="width: 16px; height: 16px;"></i><span>BASE : LALEVADE-D'ARDÈCHE (07380)</span></div>
                 </div>
@@ -349,7 +374,7 @@
                         <div><span class="label">Base</span><span class="value">Lalevade-d'Ardèche & Environs</span></div>
                     </div>
 
-                    <a href="data:text/vcard;charset=utf-8,BEGIN%3AVCARD%0AVERSION%3A3.0%0AFN%3AHugo%20Marmeys%20-%20Assist%20Informatique%0ATEL%3A0668370640%0AEMAIL%3Acontact%40assist-informatique07.fr%0AEND%3AVCARD" download="Assist-Informatique.vcf" class="btn btn-secondary btn-full" style="margin-top: 15px;">
+                    <a href="data:text/vcard;charset=utf-8,BEGIN%3AVCARD%0AVERSION%3A3.0%0AFN%3AHugo%20Marmeys%20-%20Assist%20Informatique%2007%0ATEL%3A0668370640%0AEMAIL%3Acontact%40assist-informatique07.fr%0AEND%3AVCARD" download="Assist-Informatique-07.vcf" class="btn btn-secondary btn-full" style="margin-top: 15px;">
                         <i data-lucide="user-plus" style="width: 18px; height: 18px;"></i> Enregistrer le contact (vCard)
                     </a>
                 </div>
@@ -367,14 +392,14 @@
     <footer class="site-footer">
         <div class="container footer-layout">
             <div>
-                <strong>ASSIST INFORMATIQUE</strong> &copy; 2026 — Tous droits réservés.
+                <strong>ASSIST INFORMATIQUE 07</strong> &copy; 2026 — Tous droits réservés.
                 <p class="footer-contact-info">06 68 37 06 40 | contact@assist-informatique07.fr</p>
             </div>
             <p class="siret-text">SIRET : 107 683 641 00016</p>
         </div>
     </footer>
 
-    <!-- Script principal externe (avec versioning cache-busting) -->
-    <script src="js/app.js?v=2"></script>
+    <!-- Script principal externe -->
+    <script src="js/app.js?v=3"></script>
 </body>
 </html>
