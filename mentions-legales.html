@@ -14,7 +14,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <!-- Feuille de style principale -->
-    <link rel="stylesheet" href="css/style.css?v=5">
+    <link rel="stylesheet" href="css/style.css?v=8">
 
     <style>
         .site-header .header-inner {
@@ -77,6 +77,70 @@
             width: auto;
             margin-top: 8px;
         }
+        /* Styles BANDEAU COOKIES RGPD */
+        .cookie-banner {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            left: 20px;
+            max-width: 480px;
+            margin: 0 auto;
+            background: #ffffff;
+            border: 1px solid rgba(0, 102, 204, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            z-index: 9999;
+            display: none;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .cookie-banner.active {
+            display: flex;
+        }
+        .cookie-banner h4 {
+            margin: 0;
+            font-family: var(--font-heading, 'Rajdhani', sans-serif);
+            font-size: 1.15rem;
+            color: var(--text-main, #1a202c);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .cookie-banner p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: var(--text-muted, #475569);
+            line-height: 1.5;
+        }
+        .cookie-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+        .btn-cookie {
+            padding: 8px 16px;
+            font-size: 0.85rem;
+            border-radius: 6px;
+            cursor: pointer;
+            border: none;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        .btn-cookie-accept {
+            background-color: #0066cc;
+            color: #ffffff;
+        }
+        .btn-cookie-accept:hover {
+            background-color: #0052a3;
+        }
+        .btn-cookie-refuse {
+            background-color: #e2e8f0;
+            color: #475569;
+        }
+        .btn-cookie-refuse:hover {
+            background-color: #cbd5e1;
+        }
     </style>
 </head>
 <body>
@@ -132,10 +196,10 @@
 
                 <h2>3. Propriété Intellectuelle</h2>
                 <p>
-                    L'ensemble des textes, graphismes, logos, icônes et structures présentés sur ce site sont la propriété exclusive de <strong>Assist Informatique 07</strong> (sauf mention contraire ou crédits d'icônes libres de droits). Toute reproduction, distribution ou modification sans autorisation préalable est strictement interdite.
+                    L'ensemble des textes, graphismes, logos, icônes et structures présentés sur ce site sont la propriété exclusive de <strong>Assist Informatique 07</strong> (sauf mention contraire ou crédits d'icônes libres de droits). Toute reproduction, distribution ou modification sans autorisation préalable est strictly interdite.
                 </p>
                 <p>
-                    La marque et le logotype "Services à la Personne" sont la propriété exclusive de l'État français (DGE) et sont utilisés conformément au règlement d'usage de la marque collective n° 4736023[cite: 6].
+                    La marque et le logotype "Services à la Personne" sont la propriété exclusive de l'État français (DGE) et sont utilisés conformément au règlement d'usage de la marque collective n° 4736023.
                 </p>
 
                 <h2>4. Protection des Données Personnelles (RGPD)</h2>
@@ -163,7 +227,8 @@
                 <strong>ASSIST INFORMATIQUE 07</strong> &copy; 2026 — Tous droits réservés.
                 <p class="footer-contact-info">
                     06 68 37 06 40 | contact@assist-informatique07.fr | 
-                    <a href="mentions-legales.html" style="color: inherit; text-decoration: underline;">Mentions Légales</a>
+                    <a href="mentions-legales.html" style="color: inherit; text-decoration: underline;">Mentions Légales</a> | 
+                    <a href="cgv.html" style="color: inherit; text-decoration: underline;">CGV</a>
                 </p>
                 <img src="img/logo-sap.jpg" alt="Services à la Personne" class="footer-sap-logo">
             </div>
@@ -171,9 +236,37 @@
         </div>
     </footer>
 
+    <!-- BANDEAU COOKIES RGPD -->
+    <div id="cookie-banner" class="cookie-banner" aria-live="polite">
+        <h4><i data-lucide="cookie" style="width: 20px; height: 20px; color: #0066cc;"></i> Gestion des Cookies</h4>
+        <p>
+            Ce site utilise uniquement des cookies essentiels nécessaires au bon fonctionnement de la carte d'intervention et du formulaire de contact. Pour en savoir plus, consultez nos <a href="mentions-legales.html" style="color: #0066cc; text-decoration: underline;">mentions légales</a>.
+        </p>
+        <div class="cookie-buttons">
+            <button onclick="acceptCookies()" class="btn-cookie btn-cookie-accept">Accepter</button>
+            <button onclick="refuseCookies()" class="btn-cookie btn-cookie-refuse">Refuser</button>
+        </div>
+    </div>
+
     <!-- Script d'initialisation des icônes Lucide -->
     <script>
         lucide.createIcons();
+
+        function checkCookieConsent() {
+            var consent = localStorage.getItem('cookie_consent');
+            if (!consent) {
+                document.getElementById('cookie-banner').classList.add('active');
+            }
+        }
+        function acceptCookies() {
+            localStorage.setItem('cookie_consent', 'accepted');
+            document.getElementById('cookie-banner').classList.remove('active');
+        }
+        function refuseCookies() {
+            localStorage.setItem('cookie_consent', 'refused');
+            document.getElementById('cookie-banner').classList.remove('active');
+        }
+        window.addEventListener('DOMContentLoaded', checkCookieConsent);
     </script>
 </body>
 </html>
