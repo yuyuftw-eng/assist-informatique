@@ -1,16 +1,16 @@
 /* =================================================================
-   ASSIST INFORMATIQUE 07 - CHARTE GRAPHIQUE CLAIRE & FUTURISTE 
-   (Inspirée des visuels de cartes de visite)
+   ASSIST INFORMATIQUE 07 - DESIGN CLAIR & LUMINEUX (STYLE CARTE)
    =================================================================== */
 
 :root {
     --bg-body: #ffffff;
     --bg-card: #ffffff;
+    --bg-subtle: #f4f8fc;
     --border-tech: #0066cc;
     --blue-primary: #0066cc;
-    --blue-hover: #0052a3;
-    --text-main: #0f172a;
-    --text-muted: #475569;
+    --blue-hover: #004b99;
+    --text-main: #0b132a;
+    --text-muted: #4a5568;
     --font-heading: 'Rajdhani', sans-serif;
     --font-sans: 'Inter', sans-serif;
 }
@@ -23,22 +23,15 @@
 
 body {
     font-family: var(--font-sans);
-    background-color: var(--bg-body);
+    background-color: #ffffff !important;
     color: var(--text-main);
     overflow-x: hidden;
     line-height: 1.6;
 }
 
-/* Arrière-plan épuré */
+/* Suppression de tout arrière-plan sombre ou effet opaque */
 #webgl-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
-    pointer-events: none;
-    opacity: 0.3;
+    display: none !important;
 }
 
 .container {
@@ -49,18 +42,18 @@ body {
 }
 
 /* =================================================================
-   HEADER & NAVIGATION FLUIDE
+   HEADER & NAVIGATION CLAIRE
    =================================================================== */
 .site-header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 2px solid var(--border-tech);
+    background: #ffffff;
+    border-bottom: 2px solid var(--blue-primary);
     z-index: 1000;
     padding: 12px 0;
+    box-shadow: 0 2px 10px rgba(0, 102, 204, 0.08);
 }
 
 .site-header .header-inner {
@@ -86,10 +79,10 @@ body {
 
 .brand-name {
     font-family: var(--font-heading);
-    font-size: 1.25rem;
+    font-size: 1.3rem;
     font-weight: 700;
     letter-spacing: 0.5px;
-    white-space: nowrap;
+    color: var(--text-main);
 }
 
 .brand-name span {
@@ -105,9 +98,9 @@ body {
 .main-nav .nav-link {
     color: var(--text-muted);
     text-decoration: none;
-    font-size: 0.85rem;
+    font-size: 0.88rem;
     font-weight: 600;
-    padding: 6px 10px;
+    padding: 6px 12px;
     border-radius: 4px;
     transition: all 0.2s ease;
     white-space: nowrap;
@@ -116,7 +109,7 @@ body {
 .main-nav .nav-link:hover,
 .main-nav .nav-link.active {
     color: var(--blue-primary);
-    background: rgba(0, 102, 204, 0.08);
+    background: var(--bg-subtle);
 }
 
 .btn {
@@ -134,9 +127,9 @@ body {
 }
 
 .btn-call {
-    background: rgba(0, 102, 204, 0.08);
+    background: #ffffff;
     color: var(--blue-primary);
-    border: 1px solid var(--border-tech);
+    border: 1.5px solid var(--blue-primary);
     font-size: 0.9rem;
     white-space: nowrap;
 }
@@ -147,13 +140,14 @@ body {
 }
 
 /* =================================================================
-   HERO SECTION STYLE CARTE DE VISITE
+   HERO SECTION (STYLE CARTE BLANCHE)
    =================================================================== */
 .hero-section {
     padding: 140px 0 80px 0;
     min-height: 85vh;
     display: flex;
     align-items: center;
+    background: #ffffff;
 }
 
 .hero-layout {
@@ -167,8 +161,8 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(0, 102, 204, 0.06);
-    border: 1px solid var(--border-tech);
+    background: var(--bg-subtle);
+    border: 1px solid var(--blue-primary);
     padding: 6px 14px;
     border-radius: 20px;
     font-size: 0.8rem;
@@ -176,6 +170,7 @@ body {
     letter-spacing: 1px;
     margin-bottom: 20px;
     color: var(--blue-primary);
+    font-weight: 700;
 }
 
 .pulse-dot {
@@ -221,21 +216,21 @@ body {
 }
 
 .btn-secondary {
-    background: #f8fafc;
-    color: var(--text-main);
-    border: 1px solid var(--border-tech);
+    background: #ffffff;
+    color: var(--blue-primary);
+    border: 1.5px solid var(--blue-primary);
 }
 
 .btn-secondary:hover {
-    background: rgba(0, 102, 204, 0.05);
+    background: var(--bg-subtle);
 }
 
-/* Carte HUD Blanche au style épuré */
+/* Encadrement HUD style carte de visite */
 .hero-hud-card {
-    background: var(--bg-card);
-    border: 2px solid var(--border-tech);
+    background: #ffffff;
+    border: 2px solid var(--blue-primary);
     border-radius: 12px;
-    padding: 30px;
+    padding: 35px;
     position: relative;
     box-shadow: 0 10px 30px rgba(0, 102, 204, 0.08);
     text-align: center;
@@ -243,8 +238,8 @@ body {
 
 .hud-corner {
     position: absolute;
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
     border-color: var(--blue-primary);
     border-style: solid;
 }
@@ -260,36 +255,39 @@ body {
 
 .hero-hud-card h2 {
     font-family: var(--font-heading);
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     margin-bottom: 8px;
     color: var(--text-main);
+    font-weight: 700;
 }
 
 .hud-tagline {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     color: var(--text-muted);
     letter-spacing: 1px;
     margin-bottom: 20px;
+    font-weight: 600;
 }
 
 .hud-location {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(0, 102, 204, 0.08);
-    border: 1px solid var(--border-tech);
+    background: var(--bg-subtle);
+    border: 1.5px solid var(--blue-primary);
     padding: 8px 16px;
-    border-radius: 6px;
+    border-radius: 20px;
     font-size: 0.85rem;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--blue-primary);
 }
 
 /* =================================================================
-   SECTIONS & GRILLES
+   SECTIONS
    =================================================================== */
 section {
     padding: 80px 0;
+    background: #ffffff;
 }
 
 .section-header {
@@ -299,9 +297,8 @@ section {
 
 .section-header h2 {
     font-family: var(--font-heading);
-    font-size: 2.2rem;
+    font-size: 2.3rem;
     font-weight: 700;
-    letter-spacing: 0.5px;
     color: var(--text-main);
 }
 
@@ -326,21 +323,20 @@ section {
 }
 
 .service-hud-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-tech);
+    background: #ffffff;
+    border: 1.5px solid var(--blue-primary);
     border-radius: 10px;
     padding: 25px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 15px rgba(0, 102, 204, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .service-hud-card:hover {
     transform: translateY(-4px);
-    border-color: var(--blue-primary);
-    box-shadow: 0 8px 25px rgba(0, 102, 204, 0.12);
+    box-shadow: 0 8px 25px rgba(0, 102, 204, 0.15);
 }
 
 .service-icon {
@@ -350,14 +346,15 @@ section {
 
 .service-hud-card h3 {
     font-family: var(--font-heading);
-    font-size: 1.3rem;
+    font-size: 1.35rem;
     margin-bottom: 10px;
     color: var(--text-main);
+    font-weight: 700;
 }
 
 .service-hud-card p {
     color: var(--text-muted);
-    font-size: 0.9rem;
+    font-size: 0.92rem;
     margin-bottom: 20px;
     flex-grow: 1;
 }
@@ -369,10 +366,10 @@ section {
 }
 
 .service-price-tag {
-    background: #f8fafc;
+    background: var(--bg-subtle);
     padding: 12px;
     border-radius: 6px;
-    border: 1px solid rgba(0, 102, 204, 0.15);
+    border: 1px solid rgba(0, 102, 204, 0.2);
 }
 
 .price-raw {
@@ -388,23 +385,24 @@ section {
     color: var(--blue-primary);
     padding: 2px 6px;
     border-radius: 4px;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .price-tax {
     display: block;
     font-size: 0.8rem;
-    color: #10b981;
+    color: #16a34a;
     margin-top: 4px;
+    font-weight: 600;
 }
 
 /* =================================================================
-   SIMULATEUR & CARTE
+   SIMULATEUR & CARTE (FONDS CLAIRS)
    =================================================================== */
 .simulator-section {
-    background: #f8fafc;
-    border-top: 1px solid rgba(0, 102, 204, 0.1);
-    border-bottom: 1px solid rgba(0, 102, 204, 0.1);
+    background: var(--bg-subtle);
+    border-top: 1.5px solid rgba(0, 102, 204, 0.15);
+    border-bottom: 1.5px solid rgba(0, 102, 204, 0.15);
 }
 
 .cockpit-grid {
@@ -415,14 +413,14 @@ section {
 }
 
 .map-hud-frame {
-    background: var(--bg-card);
-    border: 1px solid var(--border-tech);
+    background: #ffffff;
+    border: 1.5px solid var(--blue-primary);
     border-radius: 12px;
     padding: 15px;
     display: flex;
     flex-direction: column;
     min-height: 420px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 4px 15px rgba(0, 102, 204, 0.05);
 }
 
 #map {
@@ -439,6 +437,7 @@ section {
     padding-top: 12px;
     font-size: 0.85rem;
     color: var(--text-muted);
+    font-weight: 600;
 }
 
 .legend-item {
@@ -456,14 +455,14 @@ section {
 .bg-z2 { background: #f59e0b; }
 
 .sim-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-tech);
+    background: #ffffff;
+    border: 1.5px solid var(--blue-primary);
     border-radius: 12px;
     padding: 30px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 4px 15px rgba(0, 102, 204, 0.05);
 }
 
 .sim-card h3 {
@@ -471,6 +470,7 @@ section {
     font-size: 1.5rem;
     margin-bottom: 20px;
     color: var(--text-main);
+    font-weight: 700;
 }
 
 .client-type-selector {
@@ -479,6 +479,7 @@ section {
     margin-bottom: 20px;
     font-size: 0.9rem;
     font-weight: 600;
+    color: var(--text-main);
 }
 
 .sim-options {
@@ -492,11 +493,13 @@ section {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #f8fafc;
+    background: var(--bg-subtle);
     padding: 10px 14px;
     border-radius: 6px;
-    border: 1px solid #e2e8f0;
+    border: 1px solid rgba(0, 102, 204, 0.2);
     font-size: 0.88rem;
+    color: var(--text-main);
+    font-weight: 600;
     cursor: pointer;
 }
 
@@ -509,7 +512,7 @@ section {
 .calc-input-group input {
     flex-grow: 1;
     background: #ffffff;
-    border: 1px solid #cbd5e1;
+    border: 1.5px solid var(--blue-primary);
     padding: 10px 14px;
     border-radius: 6px;
     color: var(--text-main);
@@ -517,8 +520,8 @@ section {
 }
 
 .sim-result-box {
-    background: rgba(0, 102, 204, 0.05);
-    border: 1px solid var(--border-tech);
+    background: var(--bg-subtle);
+    border: 1.5px solid var(--blue-primary);
     border-radius: 8px;
     padding: 15px;
     text-align: center;
@@ -526,16 +529,17 @@ section {
 
 .price-badge {
     font-family: var(--font-heading);
-    font-size: 2rem;
+    font-size: 2.2rem;
     font-weight: 800;
     color: var(--blue-primary);
     margin: 8px 0;
 }
 
 .tax-deduction-badge {
-    font-size: 0.85rem;
-    color: #10b981;
+    font-size: 0.88rem;
+    color: #16a34a;
     margin-bottom: 15px;
+    font-weight: 700;
 }
 
 .btn-full {
@@ -543,7 +547,7 @@ section {
 }
 
 /* =================================================================
-   CONTACT & FOOTER
+   CONTACT & FOOTER CLAIRS
    =================================================================== */
 .contact-grid {
     display: grid;
@@ -552,11 +556,11 @@ section {
 }
 
 .contact-info-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-tech);
+    background: #ffffff;
+    border: 1.5px solid var(--blue-primary);
     border-radius: 12px;
     padding: 30px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 4px 15px rgba(0, 102, 204, 0.05);
 }
 
 .contact-info-card h3 {
@@ -564,6 +568,7 @@ section {
     font-size: 1.5rem;
     margin-bottom: 20px;
     color: var(--text-main);
+    font-weight: 700;
 }
 
 .contact-item {
@@ -575,7 +580,8 @@ section {
 
 .item-icon {
     color: var(--blue-primary);
-    background: rgba(0, 102, 204, 0.08);
+    background: var(--bg-subtle);
+    border: 1px solid var(--blue-primary);
     padding: 10px;
     border-radius: 8px;
 }
@@ -587,21 +593,23 @@ section {
 }
 
 .contact-item .value {
-    font-weight: 600;
+    font-weight: 700;
     color: var(--text-main);
     text-decoration: none;
 }
 
+/* Footer blanc épuré */
 .site-footer {
-    background: #0f172a;
-    border-top: 2px solid var(--border-tech);
+    background: #ffffff;
+    border-top: 2px solid var(--blue-primary);
     padding: 30px 0;
-    font-size: 0.85rem;
-    color: #94a3b8;
+    font-size: 0.88rem;
+    color: var(--text-muted);
 }
 
 .site-footer a {
-    color: #cbd5e1;
+    color: var(--blue-primary);
+    font-weight: 600;
 }
 
 .footer-layout {
@@ -614,12 +622,12 @@ section {
 
 .siret-text {
     text-align: right;
+    font-weight: 600;
 }
 
 /* =================================================================
-   RESPONSIVITÉ MOBILE & TABLETTE (Media Queries)
+   RESPONSIVITÉ MOBILE
    =================================================================== */
-
 @media (max-width: 992px) {
     .hero-layout,
     .cockpit-grid,
