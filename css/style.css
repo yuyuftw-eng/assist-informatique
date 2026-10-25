@@ -1,15 +1,15 @@
-/* =================================================================ato
-   ASSIST INFORMATIQUE 07 - STYLE PRINCIPAL (HUD TECH & RESPONSIVE)
+/* =================================================================
+   ASSIST INFORMATIQUE 07 - STYLE PRINCIPAL (DESIGN CLAIR & RESPONSIVE)
    =================================================================== */
 
 :root {
-    --bg-body: #0b0f19;
-    --bg-card: rgba(15, 23, 42, 0.75);
-    --border-tech: rgba(0, 102, 204, 0.35);
+    --bg-body: #f8fafc;
+    --bg-card: #ffffff;
+    --border-tech: rgba(0, 102, 204, 0.2);
     --blue-primary: #0066cc;
     --blue-hover: #0052a3;
-    --text-main: #f8fafc;
-    --text-muted: #94a3b8;
+    --text-main: #1a202c;
+    --text-muted: #475569;
     --font-heading: 'Rajdhani', sans-serif;
     --font-sans: 'Inter', sans-serif;
 }
@@ -37,6 +37,7 @@ body {
     height: 100vh;
     z-index: -1;
     pointer-events: none;
+    opacity: 0.6;
 }
 
 .container {
@@ -47,18 +48,19 @@ body {
 }
 
 /* =================================================================
-   HEADER & NAVIGATION ADAPTATIFS
+   HEADER & NAVIGATION
    =================================================================== */
 .site-header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(11, 15, 25, 0.85);
+    background: rgba(255, 255, 255, 0.92);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border-tech);
     z-index: 1000;
     padding: 12px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
 }
 
 .site-header .header-inner {
@@ -113,8 +115,8 @@ body {
 
 .main-nav .nav-link:hover,
 .main-nav .nav-link.active {
-    color: var(--text-main);
-    background: rgba(0, 102, 204, 0.15);
+    color: var(--blue-primary);
+    background: rgba(0, 102, 204, 0.08);
 }
 
 .btn {
@@ -132,8 +134,8 @@ body {
 }
 
 .btn-call {
-    background: rgba(0, 102, 204, 0.15);
-    color: var(--text-main);
+    background: rgba(0, 102, 204, 0.08);
+    color: var(--blue-primary);
     border: 1px solid var(--border-tech);
     font-size: 0.9rem;
     white-space: nowrap;
@@ -141,6 +143,7 @@ body {
 
 .btn-call:hover {
     background: var(--blue-primary);
+    color: #ffffff;
 }
 
 /* =================================================================
@@ -148,7 +151,7 @@ body {
    =================================================================== */
 .hero-section {
     padding: 140px 0 80px 0;
-    min-height: 90vh;
+    min-height: 85vh;
     display: flex;
     align-items: center;
 }
@@ -164,7 +167,7 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(0, 102, 204, 0.1);
+    background: rgba(0, 102, 204, 0.08);
     border: 1px solid var(--border-tech);
     padding: 6px 12px;
     border-radius: 20px;
@@ -189,6 +192,7 @@ body {
     line-height: 1.15;
     font-weight: 800;
     margin-bottom: 20px;
+    color: var(--text-main);
 }
 
 .accent-dot {
@@ -217,13 +221,13 @@ body {
 }
 
 .btn-secondary {
-    background: rgba(255, 255, 255, 0.05);
+    background: #ffffff;
     color: var(--text-main);
-    border: 1px solid var(--border-tech);
+    border: 1px solid #cbd5e1;
 }
 
 .btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: #f1f5f9;
 }
 
 /* Carte HUD Hero */
@@ -233,7 +237,7 @@ body {
     border-radius: 12px;
     padding: 30px;
     position: relative;
-    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
     text-align: center;
 }
 
@@ -258,6 +262,7 @@ body {
     font-family: var(--font-heading);
     font-size: 1.5rem;
     margin-bottom: 8px;
+    color: var(--text-main);
 }
 
 .hud-tagline {
@@ -271,11 +276,12 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(0, 102, 204, 0.1);
+    background: rgba(0, 102, 204, 0.08);
     padding: 8px 14px;
     border-radius: 6px;
     font-size: 0.85rem;
     font-weight: 600;
+    color: var(--blue-primary);
 }
 
 /* =================================================================
@@ -295,6 +301,7 @@ section {
     font-size: 2.2rem;
     font-weight: 700;
     letter-spacing: 0.5px;
+    color: var(--text-main);
 }
 
 .section-divider {
@@ -325,12 +332,14 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    transition: transform 0.2s ease, border-color 0.2s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .service-hud-card:hover {
     transform: translateY(-4px);
     border-color: var(--blue-primary);
+    box-shadow: 0 8px 25px rgba(0, 102, 204, 0.12);
 }
 
 .service-icon {
@@ -342,6 +351,7 @@ section {
     font-family: var(--font-heading);
     font-size: 1.3rem;
     margin-bottom: 10px;
+    color: var(--text-main);
 }
 
 .service-hud-card p {
@@ -358,10 +368,10 @@ section {
 }
 
 .service-price-tag {
-    background: rgba(0, 0, 0, 0.3);
+    background: #f1f5f9;
     padding: 12px;
     border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid #e2e8f0;
 }
 
 .price-raw {
@@ -373,16 +383,17 @@ section {
 
 .price-type-badge {
     font-size: 0.75rem;
-    background: rgba(0, 102, 204, 0.2);
-    color: #60a5fa;
+    background: rgba(0, 102, 204, 0.15);
+    color: var(--blue-primary);
     padding: 2px 6px;
     border-radius: 4px;
+    font-weight: 600;
 }
 
 .price-tax {
     display: block;
     font-size: 0.8rem;
-    color: #10b981;
+    color: #16a34a;
     margin-top: 4px;
 }
 
@@ -390,7 +401,7 @@ section {
    COCKPIT & SIMULATEUR DE DEVIS
    =================================================================== */
 .simulator-section {
-    background: rgba(0, 0, 0, 0.2);
+    background: #ffffff;
 }
 
 .cockpit-grid {
@@ -408,6 +419,7 @@ section {
     display: flex;
     flex-direction: column;
     min-height: 420px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
 }
 
 #map {
@@ -449,12 +461,14 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
 }
 
 .sim-card h3 {
     font-family: var(--font-heading);
     font-size: 1.5rem;
     margin-bottom: 20px;
+    color: var(--text-main);
 }
 
 .client-type-selector {
@@ -476,10 +490,10 @@ section {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(255, 255, 255, 0.03);
+    background: #f8fafc;
     padding: 10px 14px;
     border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid #e2e8f0;
     font-size: 0.88rem;
     cursor: pointer;
 }
@@ -498,8 +512,8 @@ section {
 
 .calc-input-group input {
     flex-grow: 1;
-    background: rgba(0, 0, 0, 0.4);
-    border: 1px solid var(--border-tech);
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
     padding: 10px 14px;
     border-radius: 6px;
     color: var(--text-main);
@@ -507,7 +521,7 @@ section {
 }
 
 .sim-result-box {
-    background: rgba(0, 102, 204, 0.08);
+    background: rgba(0, 102, 204, 0.05);
     border: 1px solid var(--border-tech);
     border-radius: 8px;
     padding: 15px;
@@ -518,13 +532,13 @@ section {
     font-family: var(--font-heading);
     font-size: 2rem;
     font-weight: 800;
-    color: #60a5fa;
+    color: var(--blue-primary);
     margin: 8px 0;
 }
 
 .tax-deduction-badge {
     font-size: 0.85rem;
-    color: #10b981;
+    color: #16a34a;
     margin-bottom: 15px;
 }
 
@@ -546,12 +560,14 @@ section {
     border: 1px solid var(--border-tech);
     border-radius: 12px;
     padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
 }
 
 .contact-info-card h3 {
     font-family: var(--font-heading);
     font-size: 1.5rem;
     margin-bottom: 20px;
+    color: var(--text-main);
 }
 
 .contact-item {
@@ -563,7 +579,7 @@ section {
 
 .item-icon {
     color: var(--blue-primary);
-    background: rgba(0, 102, 204, 0.1);
+    background: rgba(0, 102, 204, 0.08);
     padding: 10px;
     border-radius: 8px;
 }
@@ -581,11 +597,15 @@ section {
 }
 
 .site-footer {
-    background: #05070d;
+    background: #0f172a;
     border-top: 1px solid var(--border-tech);
-    padding: 30px 0;
+    padding: 35px 0;
     font-size: 0.85rem;
-    color: var(--text-muted);
+    color: #94a3b8;
+}
+
+.site-footer a {
+    color: #cbd5e1;
 }
 
 .footer-layout {
@@ -600,12 +620,11 @@ section {
     text-align: right;
 }
 
-
 /* =================================================================
-   MEDIA QUERIES - RESPONSIVITÉ TOTALE (MOBILE, TABLETTE, LAPTOP)
+   MEDIA QUERIES - RESPONSIVITÉ TOTALE (MOBILE & TABLETTE)
    =================================================================== */
 
-/* Écrans inférieurs à 992px (Tablettes et petits portables) */
+/* Écrans inférieurs à 992px (Tablettes & Portables) */
 @media (max-width: 992px) {
     .hero-layout,
     .cockpit-grid,
@@ -627,7 +646,6 @@ section {
         font-size: 2.2rem;
     }
 
-    /* Transformation de la barre de navigation sur tablettes/mobiles */
     .site-header .header-inner {
         flex-direction: column;
         gap: 10px;
@@ -640,7 +658,7 @@ section {
     }
 
     .btn-call {
-        display: none; /* Masqué dans le header pour gagner de la place, présent dans le footer/contact */
+        display: none;
     }
 }
 
