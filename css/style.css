@@ -1,14 +1,15 @@
 /* =================================================================
-   ASSIST INFORMATIQUE 07 - STYLE PRINCIPAL (DESIGN CLAIR & RESPONSIVE)
+   ASSIST INFORMATIQUE 07 - CHARTE GRAPHIQUE CLAIRE & FUTURISTE 
+   (Inspirée des visuels de cartes de visite)
    =================================================================== */
 
 :root {
-    --bg-body: #f8fafc;
+    --bg-body: #ffffff;
     --bg-card: #ffffff;
-    --border-tech: rgba(0, 102, 204, 0.2);
+    --border-tech: #0066cc;
     --blue-primary: #0066cc;
     --blue-hover: #0052a3;
-    --text-main: #1a202c;
+    --text-main: #0f172a;
     --text-muted: #475569;
     --font-heading: 'Rajdhani', sans-serif;
     --font-sans: 'Inter', sans-serif;
@@ -28,7 +29,7 @@ body {
     line-height: 1.6;
 }
 
-/* Arrière-plan 3D WebGL */
+/* Arrière-plan épuré */
 #webgl-bg {
     position: fixed;
     top: 0;
@@ -37,7 +38,7 @@ body {
     height: 100vh;
     z-index: -1;
     pointer-events: none;
-    opacity: 0.6;
+    opacity: 0.3;
 }
 
 .container {
@@ -48,19 +49,18 @@ body {
 }
 
 /* =================================================================
-   HEADER & NAVIGATION
+   HEADER & NAVIGATION FLUIDE
    =================================================================== */
 .site-header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.92);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border-tech);
+    border-bottom: 2px solid var(--border-tech);
     z-index: 1000;
     padding: 12px 0;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
 }
 
 .site-header .header-inner {
@@ -106,7 +106,7 @@ body {
     color: var(--text-muted);
     text-decoration: none;
     font-size: 0.85rem;
-    font-weight: 500;
+    font-weight: 600;
     padding: 6px 10px;
     border-radius: 4px;
     transition: all 0.2s ease;
@@ -147,7 +147,7 @@ body {
 }
 
 /* =================================================================
-   HERO SECTION
+   HERO SECTION STYLE CARTE DE VISITE
    =================================================================== */
 .hero-section {
     padding: 140px 0 80px 0;
@@ -167,9 +167,9 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(0, 102, 204, 0.08);
+    background: rgba(0, 102, 204, 0.06);
     border: 1px solid var(--border-tech);
-    padding: 6px 12px;
+    padding: 6px 14px;
     border-radius: 20px;
     font-size: 0.8rem;
     font-family: var(--font-heading);
@@ -221,37 +221,37 @@ body {
 }
 
 .btn-secondary {
-    background: #ffffff;
+    background: #f8fafc;
     color: var(--text-main);
-    border: 1px solid #cbd5e1;
+    border: 1px solid var(--border-tech);
 }
 
 .btn-secondary:hover {
-    background: #f1f5f9;
+    background: rgba(0, 102, 204, 0.05);
 }
 
-/* Carte HUD Hero */
+/* Carte HUD Blanche au style épuré */
 .hero-hud-card {
     background: var(--bg-card);
-    border: 1px solid var(--border-tech);
+    border: 2px solid var(--border-tech);
     border-radius: 12px;
     padding: 30px;
     position: relative;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 102, 204, 0.08);
     text-align: center;
 }
 
 .hud-corner {
     position: absolute;
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
     border-color: var(--blue-primary);
     border-style: solid;
 }
-.hud-corner.top-left { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
-.hud-corner.top-right { top: -1px; right: -1px; border-width: 2px 2px 0 0; }
-.hud-corner.bottom-left { bottom: -1px; left: -1px; border-width: 0 0 2px 2px; }
-.hud-corner.bottom-right { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+.hud-corner.top-left { top: -2px; left: -2px; border-width: 3px 0 0 3px; }
+.hud-corner.top-right { top: -2px; right: -2px; border-width: 3px 3px 0 0; }
+.hud-corner.bottom-left { bottom: -2px; left: -2px; border-width: 0 0 3px 3px; }
+.hud-corner.bottom-right { bottom: -2px; right: -2px; border-width: 0 3px 3px 0; }
 
 .hud-icon-wrapper {
     color: var(--blue-primary);
@@ -277,7 +277,8 @@ body {
     align-items: center;
     gap: 8px;
     background: rgba(0, 102, 204, 0.08);
-    padding: 8px 14px;
+    border: 1px solid var(--border-tech);
+    padding: 8px 16px;
     border-radius: 6px;
     font-size: 0.85rem;
     font-weight: 600;
@@ -285,7 +286,7 @@ body {
 }
 
 /* =================================================================
-   SECTIONS & GRILLES COMMUNES
+   SECTIONS & GRILLES
    =================================================================== */
 section {
     padding: 80px 0;
@@ -332,7 +333,7 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
     transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -368,10 +369,10 @@ section {
 }
 
 .service-price-tag {
-    background: #f1f5f9;
+    background: #f8fafc;
     padding: 12px;
     border-radius: 6px;
-    border: 1px solid #e2e8f0;
+    border: 1px solid rgba(0, 102, 204, 0.15);
 }
 
 .price-raw {
@@ -383,7 +384,7 @@ section {
 
 .price-type-badge {
     font-size: 0.75rem;
-    background: rgba(0, 102, 204, 0.15);
+    background: rgba(0, 102, 204, 0.1);
     color: var(--blue-primary);
     padding: 2px 6px;
     border-radius: 4px;
@@ -393,15 +394,17 @@ section {
 .price-tax {
     display: block;
     font-size: 0.8rem;
-    color: #16a34a;
+    color: #10b981;
     margin-top: 4px;
 }
 
 /* =================================================================
-   COCKPIT & SIMULATEUR DE DEVIS
+   SIMULATEUR & CARTE
    =================================================================== */
 .simulator-section {
-    background: #ffffff;
+    background: #f8fafc;
+    border-top: 1px solid rgba(0, 102, 204, 0.1);
+    border-bottom: 1px solid rgba(0, 102, 204, 0.1);
 }
 
 .cockpit-grid {
@@ -419,7 +422,7 @@ section {
     display: flex;
     flex-direction: column;
     min-height: 420px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
 }
 
 #map {
@@ -452,7 +455,6 @@ section {
 .bg-z1 { background: #10b981; }
 .bg-z2 { background: #f59e0b; }
 
-/* Carte Simulateur */
 .sim-card {
     background: var(--bg-card);
     border: 1px solid var(--border-tech);
@@ -461,7 +463,7 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
 }
 
 .sim-card h3 {
@@ -498,12 +500,6 @@ section {
     cursor: pointer;
 }
 
-.sim-option-item span {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
 .calc-input-group {
     display: flex;
     gap: 10px;
@@ -538,7 +534,7 @@ section {
 
 .tax-deduction-badge {
     font-size: 0.85rem;
-    color: #16a34a;
+    color: #10b981;
     margin-bottom: 15px;
 }
 
@@ -560,7 +556,7 @@ section {
     border: 1px solid var(--border-tech);
     border-radius: 12px;
     padding: 30px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
 }
 
 .contact-info-card h3 {
@@ -598,8 +594,8 @@ section {
 
 .site-footer {
     background: #0f172a;
-    border-top: 1px solid var(--border-tech);
-    padding: 35px 0;
+    border-top: 2px solid var(--border-tech);
+    padding: 30px 0;
     font-size: 0.85rem;
     color: #94a3b8;
 }
@@ -621,10 +617,9 @@ section {
 }
 
 /* =================================================================
-   MEDIA QUERIES - RESPONSIVITÉ TOTALE (MOBILE & TABLETTE)
+   RESPONSIVITÉ MOBILE & TABLETTE (Media Queries)
    =================================================================== */
 
-/* Écrans inférieurs à 992px (Tablettes & Portables) */
 @media (max-width: 992px) {
     .hero-layout,
     .cockpit-grid,
@@ -662,7 +657,6 @@ section {
     }
 }
 
-/* Écrans inférieurs à 600px (Smartphones) */
 @media (max-width: 600px) {
     .container {
         padding: 0 15px;
