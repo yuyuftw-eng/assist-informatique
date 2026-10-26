@@ -3,7 +3,7 @@ let userMarker = null;
 let travelFee = 0;
 let travelLocationText = "";
 
-// Coordonnées GPS EXACTES du 85 Rue des Écoles, 07380 Lalevade-d'Ardèche
+// Coordonnées GPS exactes du point de départ (85 Rue des Écoles, Lalevade-d'Ardèche) pour le calcul de distance
 const BASE_COORDS = [44.6481, 4.3253];
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -36,11 +36,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 3. Initialisation de la carte Leaflet (85 Rue des Écoles, Lalevade-d'Ardèche)
+    // 3. Initialisation de la carte Leaflet (Point de départ masqué / Général)
     const mapElement = document.getElementById('map');
 
     if (mapElement && typeof L !== 'undefined') {
-        map = L.map('map').setView(BASE_COORDS, 11);
+        map = L.map('map').setView(BASE_COORDS, 12);
 
         // Fond de carte OpenStreetMap standard
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -48,8 +48,9 @@ document.addEventListener('DOMContentLoaded', () => {
             attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
+        // Marqueur avec libellé neutre (adresse exacte masquée au public)
         L.marker(BASE_COORDS).addTo(map)
-            .bindPopup('<b>ASSIST INFORMATIQUE 07</b><br>85 Rue des Écoles<br>07380 Lalevade-d\'Ardèche').openPopup();
+            .bindPopup('<b>ASSIST INFORMATIQUE 07</b><br>Intervention à domicile & en entreprise<br><i>Basé à Lalevade-d\'Ardèche (07380)</i>').openPopup();
 
         // Zone 1 (15 km - Déplacement Offert)
         L.circle(BASE_COORDS, {
@@ -121,22 +122,20 @@ function calculateSimDistanceAndMap() {
                 const userLon = coords[0];
                 const cityName = data.features[0].properties.city || data.features[0].properties.label;
 
-                // 2. Calcul de la distance routière via OSRM (Calcul d'itinéraire réel)
+                // 2. Calcul de la distance routière via OSRM depuis le point exact
                 fetch(`https://router.project-osrm.org/route/v1/driving/${BASE_COORDS[1]},${BASE_COORDS[0]};${userLon},${userLat}?overview=false`)
                     .then(res => res.json())
                     .then(routeData => {
                         let roadDist = 0;
                         if (routeData.routes && routeData.routes.length > 0) {
-                            roadDist = routeData.routes[0].distance / 1000; // Conversion en km
+                            roadDist = routeData.routes[0].distance / 1000;
                         } else {
-                            // Secours : Vol d'oiseau x coefficient routier Ardèche (1.32)
                             roadDist = calculateHaversineDistance(BASE_COORDS[0], BASE_COORDS[1], userLat, userLon) * 1.32;
                         }
 
                         applyDistanceResult(userLat, userLon, cityName, roadDist, zoneInfo);
                     })
                     .catch(() => {
-                        // En cas d'erreur de réseau avec le routeur OSRM
                         const fallbackDist = calculateHaversineDistance(BASE_COORDS[0], BASE_COORDS[1], userLat, userLon) * 1.32;
                         applyDistanceResult(userLat, userLon, cityName, fallbackDist, zoneInfo);
                     });
@@ -147,14 +146,12 @@ function calculateSimDistanceAndMap() {
         });
 }
 
-// Fonction auxiliaire d'application du résultat de distance
 function applyDistanceResult(userLat, userLon, cityName, dist, zoneInfo) {
-    // Recentrer la carte et ajouter un marqueur
     if (map) {
         map.setView([userLat, userLon], 11);
         if (userMarker) map.removeLayer(userMarker);
         userMarker = L.marker([userLat, userLon]).addTo(map)
-            .bindPopup(`<b>${cityName}</b><br>Distance routière : ~${dist.toFixed(1)} km de Lalevade`).openPopup();
+            .bindPopup(`<b>${cityName}</b><br>Distance routière : ~${dist.toFixed(1)} km`).openPopup();
     }
 
     if (dist <= 15) {

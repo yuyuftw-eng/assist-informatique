@@ -2667,3 +2667,161 @@ section:not(.hero-section):nth-of-type(even) {
     margin-bottom: 24px;
   }
 }
+
+/* =====================================================================
+   FINITIONS VISUELLES — ALIGNEMENTS, PROPORTIONS ET RYTHME
+   Complète les styles précédents sans modifier la structure du HTML.
+   ===================================================================== */
+
+:root {
+  --section-space-desktop: clamp(50px, 4.8vw, 62px);
+  --section-space-mobile: 36px;
+}
+
+/* Un rythme plus cohérent entre l'accueil et les sections suivantes */
+.hero-section {
+  padding-top: clamp(92px, 8.5vw, 112px);
+  padding-bottom: clamp(42px, 4.2vw, 54px);
+}
+
+.hero-layout {
+  align-items: center;
+  row-gap: 28px;
+}
+
+.hero-text h1 {
+  line-height: 1.08;
+  margin-bottom: 18px;
+  text-wrap: balance;
+}
+
+.hero-description {
+  max-width: 58ch;
+  line-height: 1.7;
+  margin-bottom: 22px;
+}
+
+.hero-buttons {
+  gap: 12px;
+  margin-top: 20px;
+}
+
+section:not(.hero-section) {
+  padding-top: var(--section-space-desktop);
+  padding-bottom: var(--section-space-desktop);
+}
+
+.section-header {
+  margin-bottom: clamp(24px, 2.6vw, 32px);
+}
+
+.section-header h2,
+.section-header .section-title {
+  margin-top: 0;
+  margin-bottom: 10px;
+  line-height: 1.16;
+}
+
+.section-header p {
+  max-width: 66ch;
+  margin-inline: auto;
+  line-height: 1.65;
+}
+
+/* Les grilles gardent des gouttières régulières et les cartes s'alignent */
+.services-grid,
+.cockpit-grid,
+.contact-grid {
+  align-items: stretch;
+  column-gap: clamp(16px, 2vw, 22px);
+  row-gap: clamp(16px, 2vw, 22px);
+}
+
+.service-hud-card,
+.sim-card,
+.contact-info-card,
+.contact-form-card {
+  box-sizing: border-box;
+}
+
+.service-hud-card {
+  padding: clamp(20px, 2.2vw, 27px);
+}
+
+.service-hud-card h3,
+.service-hud-card h4 {
+  margin-top: 14px;
+  margin-bottom: 10px;
+}
+
+.service-hud-card p {
+  line-height: 1.65;
+}
+
+.sim-card,
+.contact-info-card,
+.contact-form-card {
+  padding: clamp(20px, 2.4vw, 29px);
+}
+
+.map-hud-frame {
+  padding: 6px;
+}
+
+/* Traits fins pour délimiter les zones sans alourdir la page */
+section:not(.hero-section) {
+  border-bottom-color: rgba(7, 92, 255, .12);
+}
+
+section:not(.hero-section) + section:not(.hero-section) {
+  border-top: 0;
+}
+
+.site-footer {
+  padding-top: clamp(30px, 3.5vw, 44px);
+  padding-bottom: clamp(24px, 3vw, 34px);
+}
+
+@media (min-width: 701px) {
+  .hero-section {
+    padding-top: 104px;
+    padding-bottom: 50px;
+  }
+}
+
+@media (max-width: 700px) {
+  .hero-section {
+    padding: 38px 0 34px;
+  }
+
+  .hero-text h1 {
+    margin-bottom: 14px;
+  }
+
+  .hero-description {
+    margin-bottom: 18px;
+    line-height: 1.6;
+  }
+
+  section:not(.hero-section) {
+    padding-top: var(--section-space-mobile);
+    padding-bottom: var(--section-space-mobile);
+  }
+
+  .section-header {
+    margin-bottom: 22px;
+  }
+
+  .services-grid,
+  .cockpit-grid,
+  .contact-grid {
+    row-gap: 16px;
+  }
+
+  .service-hud-card,
+  .sim-card,
+  .contact-info-card,
+  .contact-form-card {
+    padding: 20px;
+  }
+}
