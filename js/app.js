@@ -3,8 +3,8 @@ let userMarker = null;
 let travelFee = 0;
 let travelLocationText = "";
 
-// Coordonnées GPS exactes du point de départ (85 Rue des Écoles, Lalevade-d'Ardèche) pour le calcul de distance
-const BASE_COORDS = [44.6481, 4.3253];
+// Coordonnées GPS exactes du 85 Rue des Écoles, 07380 Lalevade-d'Ardèche
+const BASE_COORDS = [44.65453860, 4.31786140]; // [Latitude, Longitude]
 
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Initialisation des icônes Lucide
