@@ -2605,3 +2605,65 @@ textarea:focus {
   }
 
 }
+
+/* =====================================================================
+   AJUSTEMENT DES ESPACEMENTS ET SEPARATION DES SECTIONS
+   Garder le style clair et les séparations, sans grandes zones vides.
+   ===================================================================== */
+
+.hero-section {
+  min-height: auto;
+  padding: clamp(94px, 9vw, 122px) 0 clamp(48px, 5vw, 66px);
+}
+
+.hero-layout {
+  gap: clamp(26px, 3.5vw, 48px);
+}
+
+section:not(.hero-section) {
+  padding-block: clamp(48px, 5.2vw, 66px);
+  border-bottom: 1px solid var(--border-color, #dceeff);
+}
+
+/* Des fonds alternés très légers permettent de distinguer les blocs
+   sans devoir créer de grands espaces entre eux. */
+section:not(.hero-section):nth-of-type(odd) {
+  background-color: #f7faff;
+}
+
+section:not(.hero-section):nth-of-type(even) {
+  background-color: #eff8ff;
+}
+
+.section-header {
+  margin-bottom: clamp(26px, 3vw, 36px);
+}
+
+.section-header h2 {
+  margin-bottom: 12px;
+}
+
+.section-header p {
+  margin-top: 8px;
+}
+
+@media (min-width: 701px) {
+  .hero-section {
+    padding-top: 112px;
+    padding-bottom: 58px;
+  }
+}
+
+@media (max-width: 700px) {
+  .hero-section {
+    padding: 42px 0 42px;
+  }
+
+  section:not(.hero-section) {
+    padding-block: 42px;
+  }
+
+  .section-header {
+    margin-bottom: 24px;
+  }
+}
