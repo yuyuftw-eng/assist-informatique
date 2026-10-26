@@ -3,6 +3,9 @@ let userMarker = null;
 let travelFee = 0;
 let travelLocationText = "";
 
+// Coordonnées GPS EXACTES du 85 Rue des Écoles, 07380 Lalevade-d'Ardèche
+const BASE_COORDS = [44.6481, 4.3253];
+
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Initialisation des icônes Lucide
     if (typeof lucide !== 'undefined') {
@@ -33,34 +36,33 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 3. Initialisation de la carte Leaflet (Lalevade-d'Ardèche) - Sans clé API
-    const baseCoords = [44.6475, 4.3753]; // Coordonnées GPS de Lalevade-d'Ardèche
+    // 3. Initialisation de la carte Leaflet (85 Rue des Écoles, Lalevade-d'Ardèche)
     const mapElement = document.getElementById('map');
 
     if (mapElement && typeof L !== 'undefined') {
-        map = L.map('map').setView(baseCoords, 10);
+        map = L.map('map').setView(BASE_COORDS, 11);
 
-        // Utilisation du fond de carte OpenStreetMap standard (100% gratuit, sans clé API)
+        // Fond de carte OpenStreetMap standard
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-        L.marker(baseCoords).addTo(map)
-            .bindPopup('<b>ASSIST INFORMATIQUE</b><br>Base d\'intervention - Lalevade-d\'Ardèche').openPopup();
+        L.marker(BASE_COORDS).addTo(map)
+            .bindPopup('<b>ASSIST INFORMATIQUE 07</b><br>85 Rue des Écoles<br>07380 Lalevade-d\'Ardèche').openPopup();
 
         // Zone 1 (15 km - Déplacement Offert)
-        L.circle(baseCoords, {
-            color: '#0052FF', fillColor: '#0052FF', fillOpacity: 0.18, weight: 2, radius: 15000
+        L.circle(BASE_COORDS, {
+            color: '#10b981', fillColor: '#10b981', fillOpacity: 0.15, weight: 2, radius: 15000
         }).addTo(map);
 
         // Zone 2 (30 km - Forfait 15€)
-        L.circle(baseCoords, {
-            color: '#00D2FF', fillColor: '#00D2FF', fillOpacity: 0.1, weight: 2, radius: 30000
+        L.circle(BASE_COORDS, {
+            color: '#f59e0b', fillColor: '#f59e0b', fillOpacity: 0.1, weight: 2, radius: 30000
         }).addTo(map);
     }
 
-    // 4. Animation 3D Three.js (sur grands écrans > 768px)
+    // 4. Animation 3D Three.js
     if (window.innerWidth > 768 && typeof THREE !== 'undefined') {
         const canvas = document.getElementById('webgl-bg');
         if (canvas) {
@@ -78,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const particlesGeometry = new THREE.BufferGeometry();
             particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
             const particlesMesh = new THREE.Points(particlesGeometry, new THREE.PointsMaterial({
-                size: 0.04, color: 0x0052FF, transparent: true, opacity: 0.45
+                size: 0.04, color: 0x0066cc, transparent: true, opacity: 0.35
             }));
 
             scene.add(particlesMesh);
@@ -100,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// CALCULATEUR DE DISTANCE + RECENTRAGE DE CARTE DEPUIS LALEVADE
+// CALCULATEUR DE DISTANCE ROUTIÈRE + RECENTRAGE CARTE
 function calculateSimDistanceAndMap() {
     const inputElement = document.getElementById('sim-city-input');
     const zoneInfo = document.getElementById('sim-zone-info');
@@ -109,8 +111,7 @@ function calculateSimDistanceAndMap() {
     const input = inputElement.value.trim();
     if (!input) return;
 
-    const baseCoords = [44.6475, 4.3753]; // Lalevade-d'Ardèche
-
+    // 1. Géocodage de l'adresse saisie (API Adresse Data Gouv)
     fetch(`https://api-adresse.data.gouv.fr/search/?q=${encodeURIComponent(input)}&limit=1`)
         .then(res => res.json())
         .then(data => {
@@ -118,37 +119,60 @@ function calculateSimDistanceAndMap() {
                 const coords = data.features[0].geometry.coordinates; // [lon, lat]
                 const userLat = coords[1];
                 const userLon = coords[0];
-                const dist = calculateHaversineDistance(baseCoords[0], baseCoords[1], userLat, userLon);
-                const cityName = data.features[0].properties.city;
+                const cityName = data.features[0].properties.city || data.features[0].properties.label;
 
-                // Recentrer la carte Leaflet et placer un repère
-                if (map) {
-                    map.setView([userLat, userLon], 11);
-                    if (userMarker) map.removeLayer(userMarker);
-                    userMarker = L.marker([userLat, userLon]).addTo(map)
-                        .bindPopup(`<b>${cityName}</b><br>Distance : ~${dist.toFixed(1)} km de Lalevade`).openPopup();
-                }
+                // 2. Calcul de la distance routière via OSRM (Calcul d'itinéraire réel)
+                fetch(`https://router.project-osrm.org/route/v1/driving/${BASE_COORDS[1]},${BASE_COORDS[0]};${userLon},${userLat}?overview=false`)
+                    .then(res => res.json())
+                    .then(routeData => {
+                        let roadDist = 0;
+                        if (routeData.routes && routeData.routes.length > 0) {
+                            roadDist = routeData.routes[0].distance / 1000; // Conversion en km
+                        } else {
+                            // Secours : Vol d'oiseau x coefficient routier Ardèche (1.32)
+                            roadDist = calculateHaversineDistance(BASE_COORDS[0], BASE_COORDS[1], userLat, userLon) * 1.32;
+                        }
 
-                if (dist <= 15) {
-                    travelFee = 0;
-                    travelLocationText = `${cityName} (~${dist.toFixed(1)} km) : Déplacement OFFERT`;
-                    zoneInfo.style.color = '#00A852';
-                } else if (dist <= 30) {
-                    travelFee = 15;
-                    travelLocationText = `${cityName} (~${dist.toFixed(1)} km) : Forfait 15 €`;
-                    zoneInfo.style.color = '#0052FF';
-                } else {
-                    travelFee = 0;
-                    travelLocationText = `${cityName} (~${dist.toFixed(1)} km) : Secteur étendu (Sur devis)`;
-                    zoneInfo.style.color = '#0052FF';
-                }
+                        applyDistanceResult(userLat, userLon, cityName, roadDist, zoneInfo);
+                    })
+                    .catch(() => {
+                        // En cas d'erreur de réseau avec le routeur OSRM
+                        const fallbackDist = calculateHaversineDistance(BASE_COORDS[0], BASE_COORDS[1], userLat, userLon) * 1.32;
+                        applyDistanceResult(userLat, userLon, cityName, fallbackDist, zoneInfo);
+                    });
 
-                zoneInfo.innerText = "📍 " + travelLocationText;
-                updateSimPrice();
             } else {
-                alert("Commune introuvable. Veuillez vérifier l'orthographe.");
+                alert("Commune ou adresse introuvable. Veuillez préciser le nom ou le code postal.");
             }
         });
+}
+
+// Fonction auxiliaire d'application du résultat de distance
+function applyDistanceResult(userLat, userLon, cityName, dist, zoneInfo) {
+    // Recentrer la carte et ajouter un marqueur
+    if (map) {
+        map.setView([userLat, userLon], 11);
+        if (userMarker) map.removeLayer(userMarker);
+        userMarker = L.marker([userLat, userLon]).addTo(map)
+            .bindPopup(`<b>${cityName}</b><br>Distance routière : ~${dist.toFixed(1)} km de Lalevade`).openPopup();
+    }
+
+    if (dist <= 15) {
+        travelFee = 0;
+        travelLocationText = `${cityName} (~${dist.toFixed(1)} km par la route) : Déplacement OFFERT`;
+        zoneInfo.style.color = '#10b981';
+    } else if (dist <= 30) {
+        travelFee = 15;
+        travelLocationText = `${cityName} (~${dist.toFixed(1)} km par la route) : Forfait 15 €`;
+        zoneInfo.style.color = '#0066cc';
+    } else {
+        travelFee = 0;
+        travelLocationText = `${cityName} (~${dist.toFixed(1)} km par la route) : Secteur étendu (Sur devis)`;
+        zoneInfo.style.color = '#f59e0b';
+    }
+
+    zoneInfo.innerText = "📍 " + travelLocationText;
+    updateSimPrice();
 }
 
 function calculateHaversineDistance(lat1, lon1, lat2, lon2) {
